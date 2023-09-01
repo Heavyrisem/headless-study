@@ -1,15 +1,15 @@
-"use client";
+import React from 'react';
 
-export function Button(): JSX.Element {
+export const Button: React.FC = () => {
   return (
     <button
       onClick={(): void => {
         // eslint-disable-next-line no-alert -- alert is being used for demo purposes only
-        alert("booped");
+        alert('booped');
       }}
       type="button"
     >
       Boop
     </button>
   );
-}
+};

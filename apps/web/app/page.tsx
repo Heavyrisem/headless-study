@@ -1,4 +1,6 @@
-import { Button, Header } from "ui";
+'use client';
+
+import { Button, Header } from 'ui';
 
 export default function Page(): JSX.Element {
   return (
