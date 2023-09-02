@@ -1,12 +1,16 @@
 'use client';
 
-import { Button, Header } from 'ui';
+import { useState } from 'react';
+import { Button, Header, Switch } from 'ui';
 
-export default function Page(): JSX.Element {
+export default function Page() {
+  const [enabled, setEnabled] = useState(false);
+
   return (
     <>
-      <Header text="Web" />
-      <Button />
+      {/* <Header text="Web" />
+      <Button /> */}
+      <Switch onChange={setEnabled}>{String(enabled)}</Switch>
     </>
   );
 }
