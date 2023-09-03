@@ -1,6 +1,7 @@
-import React, { PropsWithChildren, useCallback, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
-interface SwitchProps extends PropsWithChildren {
+interface SwitchProps
+  extends Omit<React.HTMLAttributes<HTMLButtonElement>, 'onChange' | 'defaultValue'> {
   enabled?: boolean;
   defaultValue?: boolean;
   onChange?: (enabled: boolean) => void;
@@ -10,18 +11,26 @@ const Switch: React.FC<SwitchProps> = ({
   enabled: controlledEnabled,
   defaultValue = false,
   onChange,
+  onClick,
   ...rest
 }) => {
   const [enabled, setEnabled] = useState<boolean>(defaultValue);
 
-  const handleClickSwitch = useCallback(() => {
-    if (controlledEnabled === undefined) {
-      setEnabled(!enabled);
-      onChange?.(!enabled);
-    } else {
-      onChange?.(!enabled);
-    }
-  }, [controlledEnabled, enabled, onChange]);
+  const handleClickSwitch = useCallback<React.MouseEventHandler<HTMLButtonElement>>(
+    (e) => {
+      const isControlled = controlledEnabled !== undefined;
+
+      if (isControlled) {
+        onChange?.(!controlledEnabled);
+      } else {
+        setEnabled(!enabled);
+        onChange?.(!enabled);
+      }
+
+      onClick?.(e);
+    },
+    [controlledEnabled, enabled, onChange, onClick],
+  );
 
   return <button onClick={handleClickSwitch} {...rest} />;
 };
