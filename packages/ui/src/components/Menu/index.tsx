@@ -3,6 +3,7 @@ import Item from './components/Item';
 import Items from './components/Items';
 import MenuComponent from './components/Menu';
 
+export * from './types';
 export * from './components/Menu';
 // export * from './components/Items';
 // export * from './components/Item';

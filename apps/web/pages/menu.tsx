@@ -32,27 +32,30 @@ const MenuPage = () => {
             <Menu.Item
               id="Menu 1"
               value="Menu 1"
-              className="block m-0 px-2 py-1 rounded hover:bg-zinc-600 focus:bg-zinc-600 focus:outline-none transition-colors duration-150"
+              className="block m-0 px-2 py-1 rounded hover:bg-zinc-600 focus-visible:bg-zinc-600 focus:outline-none transition-colors duration-150"
             >
               Panel 1
             </Menu.Item>
             <Menu.Item
               id="Menu 2"
               value="Menu 2"
-              className="block m-0 px-2 py-1 rounded hover:bg-zinc-600 focus:bg-zinc-600 focus:outline-none transition-colors duration-150"
+              className="block m-0 px-2 py-1 rounded hover:bg-zinc-600 focus-visible:bg-zinc-600 focus:outline-none transition-colors duration-150"
             >
               Panel 2
             </Menu.Item>
             <Menu.Item
               id="Menu 3"
               value="Menu 3"
-              className="block m-0 px-2 py-1 rounded hover:bg-zinc-600 focus:bg-zinc-600 focus:outline-none transition-colors duration-150"
+              className="block m-0 px-2 py-1 rounded hover:bg-zinc-600 focus-visible:bg-zinc-600 focus:outline-none transition-colors duration-150"
             >
               Panel 3
             </Menu.Item>
           </div>
         </Menu.Items>
       </Menu>
+      {/* <button className="m-0 px-2 py-1 rounded hover:bg-zinc-600 focus-visible:bg-zinc-600 active:bg-zinc-600 focus:outline-none transition-colors duration-150">
+        123
+      </button> */}
     </div>
   );
 };

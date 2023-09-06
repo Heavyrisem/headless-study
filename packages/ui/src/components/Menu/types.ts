@@ -1,5 +1,4 @@
-export interface MenuItem {
+export interface MenuItemType {
   id: string;
-  label: React.ReactNode;
   value: string;
 }

@@ -1,10 +1,12 @@
 import React, { PropsWithChildren, useCallback } from 'react';
 
 import useMenuContext from '../hooks/useMenuContext';
+import { MenuItemType } from '../types';
 
-export interface ItemProps extends PropsWithChildren, React.HTMLAttributes<HTMLButtonElement> {
-  id: string;
-  value: string;
+export interface ItemProps
+  extends PropsWithChildren,
+    MenuItemType,
+    Omit<React.HTMLAttributes<HTMLButtonElement>, 'id'> {
   disabled?: boolean;
 }
 
@@ -22,9 +24,9 @@ const Item: React.FC<ItemProps> = ({
     (e) => {
       e.preventDefault();
       e.stopPropagation();
-      if (!disabled) onClickItem({ id, value, label });
+      if (!disabled) onClickItem({ id, value });
     },
-    [disabled, id, label, onClickItem, value],
+    [disabled, id, onClickItem, value],
   );
 
   return (

@@ -1,9 +1,9 @@
 import React, { PropsWithChildren, useCallback, useMemo } from 'react';
 
-import { MenuItem } from './types';
+import { MenuItemType } from './types';
 
 export interface MenuContextState {
-  onClickItem: (item: MenuItem) => void;
+  onClickItem: (item: MenuItemType) => void;
 }
 
 const initalValue: MenuContextState = {
@@ -21,7 +21,7 @@ export const MenuContextProvider: React.FC<MenuContextProviderProps> = ({
   onClickItem,
 }) => {
   const handleClickItem = useCallback(
-    (item: MenuItem) => {
+    (item: MenuItemType) => {
       onClickItem?.(item);
     },
     [onClickItem],
