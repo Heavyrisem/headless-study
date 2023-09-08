@@ -9,12 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "ui": "workspace:*",
     "@codesandbox/sandpack-react": "^2.6.9",
     "@types/node": "20.5.9",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
     "autoprefixer": "^10.4.15",
+    "axios": "^1.5.0",
     "contentlayer": "^0.3.4",
     "eslint": "8.48.0",
     "eslint-config-next": "13.0.0",
@@ -28,10 +28,12 @@
     "remark-gfm": "^3.0.1",
     "tailwindcss": "^3.3.3",
     "typescript": "5.2.2",
+    "ui": "workspace:*",
     "unified": "^11.0.3",
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
     "@types/mdx": "^2.0.7",
     "eslint-config-custom": "workspace:*"
   }
