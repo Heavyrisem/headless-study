@@ -24,6 +24,9 @@
       ],
       "contentlayer/generated": [
         "./.contentlayer/generated"
+      ],
+      "docs/*": [
+        "./docs/*"
       ]
     }
   },

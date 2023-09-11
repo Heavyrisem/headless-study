@@ -1,5 +1,5 @@
-import Codeblock from '@/components/Codeblock';
-import { Sandpack } from '@codesandbox/sandpack-react';
+import CodeBlock from '@/components/CodeBlock';
+import SandPack from '@/components/SandPack';
 import { Post, allPosts } from 'contentlayer/generated';
 import { readFileSync } from 'fs';
 import { MDXComponents } from 'mdx/types';
@@ -17,7 +17,12 @@ const mdxComponents: MDXComponents = {
     const type = props.children.props.className.replace('language-', '') ?? '';
     const something = Boolean(props.children.props.something);
     // console.log('children', props.children, { type, something });
-    return <Codeblock filename="App.tsx" code={code} type={type} />;
+    return <CodeBlock code={code} />;
+  },
+  SandPack: (props: any) => {
+    const code = props.code as string | undefined;
+    if (!code) return <div>ERROR::Sandpack::NO_CODE_INPUT</div>;
+    return <SandPack type="jsx" filename="App.tsx" code={props.code} />;
   },
 };
 

@@ -1,51 +1,35 @@
-import React, { useEffect, useState } from 'react';
-import { Sandpack, SandpackProps } from '@codesandbox/sandpack-react';
-import axios from 'axios';
+import React, { useCallback } from 'react';
+import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live';
+import * as ui from 'ui';
 
-interface CodeblockProps extends SandpackProps {
-  type: string;
-  filename: string;
-  code: string;
-}
+interface CodeBlockProps extends React.ComponentProps<typeof LiveProvider> {}
 
-const Codeblock: React.FC<CodeblockProps> = ({ code }) => {
-  const [uiBundled, setUiBundled] = useState<string>();
+const scope = { ...ui };
 
-  useEffect(() => {
-    axios.get<string>('/api/uibundle').then((res) => setUiBundled(res.data));
-  }, []);
-
-  if (!uiBundled) return <div>Loading...</div>;
-
+const CodeBlock: React.FC<CodeBlockProps> = ({ code, ...rest }) => {
   return (
-    <Sandpack
-      template="react-ts"
-      options={{
-        externalResources: ['https://cdn.tailwindcss.com'],
-        showConsole: true,
-        showConsoleButton: true,
-      }}
-      files={{
-        '/App.tsx': code,
-        '/node_modules/ui/package.json': {
-          hidden: true,
-          code: JSON.stringify({
-            name: 'ui',
-            main: './index.js',
-          }),
-        },
-        '/node_modules/ui/index.js': {
-          hidden: true,
-          code: uiBundled,
-        },
-      }}
-      customSetup={{
-        dependencies: {
-          tailwindcss: 'latest',
-        },
-      }}
-    />
+    <>
+      <LiveProvider code={code} scope={scope} {...rest}>
+        <div className="m-4">
+          <span className="block p-1.5 px-3 rounded-t-md bg-zinc-400 text-xs text-white">
+            preview
+          </span>
+          <div className="p-4 rounded-b-md rounded-tl-none bg-zinc-200">
+            <LivePreview />
+          </div>
+        </div>
+        <div className="m-4">
+          <span className="block p-1.5 px-3 rounded-t-md bg-indigo-900 text-xs text-white">
+            code
+          </span>
+          <div className="rounded-b-md overflow-hidden">
+            <LiveEditor />
+          </div>
+        </div>
+        <LiveError />
+      </LiveProvider>
+    </>
   );
 };
 
-export default Codeblock;
+export default CodeBlock;
