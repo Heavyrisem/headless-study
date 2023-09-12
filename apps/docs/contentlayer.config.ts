@@ -1,7 +1,7 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files';
 
 import remarkGfm from 'remark-gfm';
-import remarkEmoji from 'remark-emoji';
+// import remarkEmoji from 'remark-emoji';
 import rehypeSlug from 'rehype-slug';
 
 import { visit } from 'unist-util-visit';

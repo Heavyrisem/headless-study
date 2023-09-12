@@ -15,9 +15,9 @@ const mdxComponents: MDXComponents = {
 
     const code = props.children.props.children;
     const type = props.children.props.className.replace('language-', '') ?? '';
-    const something = Boolean(props.children.props.something);
-    // console.log('children', props.children, { type, something });
-    return <CodeBlock code={code} />;
+    const filename = props.children.props.filename ?? 'App.tsx';
+
+    return <SandPack type="tsx" filename={filename} code={code} />;
   },
   SandPack: (props: any) => {
     const code = props.code as string | undefined;
